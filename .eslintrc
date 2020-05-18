@@ -1,0 +1,7 @@
+{
+	"extends": ["airbnb-base", "prettier"],
+	"rules": {
+		"prefer-promise-reject-errors": "off",
+		"max-len": ["error", {"code": 80, "ignoreComments": true, "ignoreUrls": true}]
+	}
+}

@@ -1,7 +1,7 @@
 {
   "name": "bechdel-beyond-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Bechdel and beyond is a an app where you find more information about gender parity in movies and if they pass berchdel test or not",
   "main": "router.js",
   "directories": {
     "test": "tests"
@@ -14,15 +14,25 @@
     "pg": "^8.2.1"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.4",
     "nock": "^12.0.3",
     "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "supertest": "^4.0.2",
-    "tape": "^5.0.0",
-    "tap-spec": "^5.0.0"
+    "tap-spec": "^5.0.0",
+    "tape": "^5.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint .",
+		"prettify": "pretty-quick --staged"
   },
   "author": "",
   "license": "ISC"

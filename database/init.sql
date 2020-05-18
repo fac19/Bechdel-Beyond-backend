@@ -63,10 +63,7 @@ CREATE TABLE user_reviews
         (title, poster, year, rated, released, runtime, genre, director, actors, writer, plot, filmLanguage, country, awards, ratings)
 
     VALUES
-        ('Titanic', 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCo
--authored-
-by:
-glrta <to.gio@pm.me>tMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', 'drama, romance', 'James Cameron', 'Leonardo Di Caprio, Kate Winslet, Billy Zane, Cathy Bates', 'James Cameron', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '10');
+        ('Titanic', 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCotMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', 'drama, romance', 'James Cameron', 'Leonardo Di Caprio, Kate Winslet, Billy Zane, Cathy Bates', 'James Cameron', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '10');
 
     INSERT INTO user_reviews
         (user_id, film_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment)

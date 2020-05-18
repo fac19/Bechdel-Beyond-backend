@@ -20,8 +20,7 @@
   "lint-staged": {
     "*.js": [
       "eslint",
-      "pretty-quick --staged",
-      "git add"
+      "pretty-quick --staged"
     ]
   },
   "dependencies": {

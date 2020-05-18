@@ -6,6 +6,24 @@
   "directories": {
     "test": "tests"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "lint": "eslint .",
+		"prettify": "pretty-quick --staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "pretty-quick --staged",
+      "git add"
+    ]
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -28,12 +46,7 @@
     "tap-spec": "^5.0.0",
     "tape": "^5.0.0"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "lint": "eslint .",
-		"prettify": "pretty-quick --staged"
-  },
+  
   "author": "",
   "license": "ISC"
 }

@@ -57,7 +57,7 @@ CREATE TABLE user_reviews
         (username, email, userPassword)
     VALUES
         ('Gio', 'gio@gio.com', '123'),
-        ('Chloe', 'chloe@chloe.com', '456');
+        ('Chloe', 'chloe@chloe.com', '123');
 
     INSERT INTO films
         (title, poster, year, rated, released, runtime, genre, director, actors, writer, plot, filmLanguage, country, awards, ratings)

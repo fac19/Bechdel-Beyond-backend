@@ -1,13 +1,52 @@
 const db = require("./connection");
 const fetch = require("node-fetch");
 
-const apikey = process.env.APIKEY
+const apikeyTMDB = process.env.APIKEYTMDB
+const apikeyOMDB = process.env.APIKEYOMDB
+
+const movieTitles = [];
+const movieIds = [];
+// console.log("movieIds", movieIds)
 
 function setupMovies() {
-    // console.log('hello')
-    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=e321983e25312e5a5c14a4119f9e8fb6&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`)
+    return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apikeyTMDB}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`)
     .then(data => data.json())
-    .then(result => console.log(result))
+    .then(result => {
+      const moviesArr = result.results
+      moviesArr.map(movie => {
+        movieTitles.push(movie.title)
+        movieIds.push(movie.id)
+      })
+      
+      console.log("titles", movieTitles, "movieIds", movieIds)
+    })
+    .then(getMovieDetails)
+    // .then(getMovieCrew)
     .catch(console.error)
 }
+
+
+function getMovieDetails() {
+    movieTitles.forEach(
+      title => {
+        return fetch('http://www.omdbapi.com/?t=' + title + '&apikey=' + apikeyOMDB)
+        .then(data => data.json())
+        .then(results => 
+            console.log(results))
+          // db.query(
+          //   `INSERT INTO films(title, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings) VALUES ($)`
+          // )
+      })
+  
+}
+
+function getMovieCrew() {
+  movieIds.forEach(
+    id => {
+      return fetch('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=' + apikeyTMDB)
+      .then(data => data.json())
+      .then(results => console.log(results))
+    })
+}
+
 module.exports = setupMovies;

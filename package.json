@@ -1,50 +1,30 @@
 {
-	"name": "bechdel-beyond-api",
-	"version": "1.0.0",
-	"description": "Bechdel and beyond is a an app where you find more information about gender parity in movies and if they pass berchdel test or not",
-	"main": "router.js",
-	"directories": {
-		"test": "tests"
-	},
-	"scripts": {
-		"start": "node server.js",
-		"test": "PGDATABASE=bbtest tape tests/*.test.js | tap-spec",
-		"lint": "eslint .",
-		"prettify": "pretty-quick --staged"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.js": [
-			"eslint",
-			"pretty-quick --staged"
-		]
-	},
-	"dependencies": {
-		"bcryptjs": "^2.4.3",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"jsonwebtoken": "^8.5.1",
-		"pg": "^8.2.1"
-	},
-	"devDependencies": {
-		"eslint": "^6.8.0",
-		"eslint-config-airbnb-base": "^14.1.0",
-		"eslint-config-prettier": "^6.11.0",
-		"eslint-plugin-import": "^2.20.2",
-		"husky": "^4.2.5",
-		"lint-staged": "^10.2.4",
-		"nock": "^12.0.3",
-		"nodemon": "^2.0.4",
-		"prettier": "^2.0.5",
-		"pretty-quick": "^2.0.1",
-		"supertest": "^4.0.2",
-		"tap-spec": "^5.0.0",
-		"tape": "^5.0.0"
-	},
-	"author": "",
-	"license": "ISC"
+  "name": "bechdel-beyond-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.0",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "nock": "^12.0.3",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2",
+    "tape": "^5.0.0",
+    "tap-spec": "^5.0.0"
+  },
+  "scripts": {
+    "test": "PGDATABASE=bbtest tape tests/*.test.js | tap-spec",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC"
 }

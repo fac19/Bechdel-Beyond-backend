@@ -1,4 +1,5 @@
 const db = require("./connection");
+const fetch = require("node-fetch");
 
 const apikey = process.env.APIKEY
 

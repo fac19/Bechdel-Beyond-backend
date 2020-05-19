@@ -2,7 +2,7 @@
   "name": "bechdel-beyond-api",
   "version": "1.0.0",
   "description": "",
-  "main": "router.js",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },
@@ -11,6 +11,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.0",
     "pg": "^8.2.1"
   },
   "devDependencies": {

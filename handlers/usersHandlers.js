@@ -1,12 +1,12 @@
-const { createUser } = require('../model/usersModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const model = require('../model/usersModel');
 
 require('dotenv').config();
 
 const secret = process.env.SECRET;
 
-function createUser(req, res, next) {
+function signup(req, res, next) {
   if (
     req.body.email === undefined ||
     req.body.username === undefined ||
@@ -18,33 +18,35 @@ function createUser(req, res, next) {
     error.status = 400;
     next(error);
   }
-
   const newUserEmail = req.body.email;
   const newUserName = req.body.username;
   const rawPassword = req.body.password;
 
   bcrypt
     .genSalt(10)
-    .then((salt) => bycrypt.hash(rawPassword, salt))
-    .then((hashedPassword) => {
+    .then((salt) => bcrypt.hash(rawPassword, salt))
+    .then((cookedPassword) => {
       const newUser = {
         email: newUserEmail,
         username: newUserName,
-        password: hashedPassword,
+        password: cookedPassword,
       };
-      createUser(newUser)
-        .then((UserID) => {
+      model
+        .createUser(newUser)
+        .then((userID) => {
           const token = jwt.sign(
             {
-              user_id: UserID,
+              user_id: userID,
             },
             secret,
             {
-              expiresIn: '15m',
+              expiresIn: '1h',
             },
           );
           res.status(201).send({
+            user_id: userID,
             username: newUserName,
+            email: newUserEmail,
             token: token,
           });
         })
@@ -54,11 +56,35 @@ function createUser(req, res, next) {
               'Could not sign up with those credentials, that email may already exist',
             msg: err.message,
           });
+        })
+        .catch(next);
+    });
+}
+
+function logIn(req, res, next) {
+  model
+    .getUser(req.body.email)
+    .then((dbUser) => {
+      bcrypt.compare(req.body.password, dbUser.userpassword).then((result) => {
+        if (!result) throw new Error('Bad password!');
+        const claims = {
+          user_id: dbUser.id,
+          admin: dbUser.adminusr || false,
+        };
+        const token = jwt.sign(claims, secret, {
+          expiresIn: '24h',
         });
+        res.send({
+          user_name: dbUser.username,
+          user_id: dbUser.id,
+          token: token,
+        });
+      });
     })
     .catch(next);
 }
 
 module.exports = {
-  createUser,
+  signup,
+  logIn,
 };

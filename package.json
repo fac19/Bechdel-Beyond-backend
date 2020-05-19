@@ -2,12 +2,12 @@
 	"name": "bechdel-beyond-api",
 	"version": "1.0.0",
 	"description": "Bechdel and beyond is a an app where you find more information about gender parity in movies and if they pass berchdel test or not",
-	"main": "router.js",
+	"main": "server.js",
 	"directories": {
 		"test": "tests"
 	},
 	"scripts": {
-		"start": "node server.js",
+		"start": "nodemon server.js",
 		"test": "PGDATABASE=bbtest tape tests/*.test.js | tap-spec",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"

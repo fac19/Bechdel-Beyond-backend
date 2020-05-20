@@ -8,14 +8,15 @@ CREATE TABLE users
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
-    userPassword VARCHAR(255),    
+    userPassword VARCHAR(255),
     adminusr BOOLEAN
 );
 
 CREATE TABLE films
 (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
+    tmdb_id INTEGER,
+    title VARCHAR(255) UNIQUE,
     poster TEXT,
     year VARCHAR(255),
     rated VARCHAR(255),
@@ -42,21 +43,22 @@ CREATE TABLE user_reviews
     date TIMESTAMP
     WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TABLE crew
-(
-    id SERIAL PRIMARY KEY,
-    img TEXT,
-    name VARCHAR(255),
-    gender VARCHAR(255)
-);
+    CREATE TABLE crew
+    (
+        id SERIAL PRIMARY KEY,
+        img TEXT,
+        name VARCHAR(255),
+        gender VARCHAR(255),
 
-CREATE TABLE films_crew
-(
-  id SERIAL PRIMARY KEY,
-  crew_id INTEGER REFERENCES crew(id),
-  films_id INTEGER REFERENCES films(id),
-  role VARCHAR(255)
-);
+    );
+
+    CREATE TABLE films_crew
+    (
+        id SERIAL PRIMARY KEY,
+        crew_id INTEGER REFERENCES crew(id),
+        films_id INTEGER REFERENCES films(id),
+        role VARCHAR(255)
+    );
     INSERT INTO users
         (username, email, userPassword)
     VALUES
@@ -84,5 +86,5 @@ CREATE TABLE films_crew
     VALUES
         (1, 1, 'director'),
         (1, 1, 'writer');
-          
+
     COMMIT;

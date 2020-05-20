@@ -18,32 +18,6 @@ function checkResponse(res) {
 	}
 }
 
-function setupMovies() {
-	let i = 0;
-	return (
-		fetch(
-			`https://api.themoviedb.org/3/discover/movie?api_key=${apikeyTMDB}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`,
-		)
-			.then((data) => data.json())
-			.then((result) => {
-				const moviesArr = result.results;
-				if (i <= 20) {
-					moviesArr.map((movie) => {
-						movieTitles.push(movie.title);
-						movieIds.push(movie.id);
-						i++;
-					});
-				}
-				return movieTitles;
-			})
-			// .then(getMovieDetails)
-			.then(getMovieCrew)
-			.catch(console.error)
-	);
-
-	// console.log('titles', movieTitles, 'movieIds', movieIds);
-}
-
 function getMovieDetails() {
 	movieIds.forEach((id) => {
 		return fetch('http://www.omdbapi.com/?t=' + title + '&apikey=' + apikeyOMDB)
@@ -89,6 +63,32 @@ function getMovieCrew() {
 			});
 		// .then((results) => console.log(results));
 	});
+}
+
+function setupMovies() {
+	let i = 0;
+	return (
+		fetch(
+			`https://api.themoviedb.org/3/discover/movie?api_key=${apikeyTMDB}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`,
+		)
+			.then((data) => data.json())
+			.then((result) => {
+				const moviesArr = result.results;
+				if (i <= 20) {
+					moviesArr.map((movie) => {
+						movieTitles.push(movie.title);
+						movieIds.push(movie.id);
+						i++;
+					});
+				}
+				return movieTitles;
+			})
+			// .then(getMovieDetails)
+			.then(getMovieCrew)
+			.catch(console.error)
+	);
+
+	// console.log('titles', movieTitles, 'movieIds', movieIds);
 }
 
 module.exports = setupMovies;

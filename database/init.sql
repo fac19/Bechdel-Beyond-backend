@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS users, user_reviews, films, crew
+    DROP TABLE IF EXISTS users, user_reviews, films, crew, films_crew
     CASCADE;
 
 CREATE TABLE users

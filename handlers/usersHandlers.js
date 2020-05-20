@@ -8,20 +8,15 @@ const secret = process.env.SECRET;
 
 function signup(req, res, next) {
   if (
-    req.body.email === undefined ||
-    req.body.username === undefined ||
-    req.body.password === undefined
+    !req.body.email ||
+    !req.body.username ||
+    !req.body.password
   ) {
-    const error = new Error(
-      'Missing parameter: email, username, password all required.',
-    );
-    error.status = 400;
-    next(error);
+    return res.status(400).send({message: "req body cannot be empty"})
   }
   const newUserEmail = req.body.email;
   const newUserName = req.body.username;
   const rawPassword = req.body.password;
-
   bcrypt
     .genSalt(10)
     .then((salt) => bcrypt.hash(rawPassword, salt))
@@ -32,22 +27,14 @@ function signup(req, res, next) {
         password: cookedPassword,
       };
       model
-        .createUser(newUser)
-        .then((userID) => {
-          const token = jwt.sign(
-            {
-              user_id: userID,
-            },
-            secret,
-            {
-              expiresIn: '1h',
-            },
-          );
+      .createUser(newUser)
+      .then((userID) => {
+          const token = jwt.sign({user_id: userID},secret,{expiresIn: '1h'});
           res.status(201).send({
             user_id: userID,
             username: newUserName,
             email: newUserEmail,
-            token: token,
+            token: token
           });
         })
         .catch((err) => {

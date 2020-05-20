@@ -3,10 +3,10 @@ const db = require('../database/connection.js');
 function createUser(user) {
   return db
     .query(
-      'INSERT INTO users(username, email, userPassword) VALUES ($1, $2, $3) RETURNING *;',
+      'INSERT INTO users(username, email, userPassword) VALUES ($1, $2, $3) RETURNING id;',
       [user.username, user.email, user.password],
     )
-    .then((res) => res.rows[0].id);
+    .then((results) => results.rows[0].id);
 }
 
 function getUser(email) {

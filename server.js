@@ -10,7 +10,9 @@ server.use(express.json());
 server.post('/user', signup);
 server.post('/login', logIn);
 
-server.get('/', setupMovies)
+server.get('/', (req, res, next) => res.send("hi"));
+
+// server.get('/', setupMovies)
 
 
 server.use(handleError);

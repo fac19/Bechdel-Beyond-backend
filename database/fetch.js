@@ -54,12 +54,12 @@ function getMovieDetails() {
 				let b3 = false;
 				let bey = 0;
 				// console.log(movie.rating, typeof movie.rating);
-				if (movie.rating == 3) {
+				if (movie.rating === 3) {
 					b1 = true;
 					b2 = true;
 					b3 = true;
 					bey = 4;
-				} else if (movie.rating == 2) {
+				} else if (movie.rating === 2) {
 					b1 = true;
 					b2 = true;
 					bey = 3;

@@ -1,13 +1,18 @@
 language: node_js
-install:
-  - npm install -g codecov
+node_js:
+  - '12.15.0'
+# install:
+#   - npm install -g codecov
+cache:
+  directories:
+    - node_modules
 script:
-  - npm run test
+  - npm test
   - npm run report-test
-deploy:
-  provider: heroku
-  api_key:
-    secure: hHO0AF0VBOD+ve+J/OqHL5dJmnRKS5z+mRcwzDniMvAJnBF+wRLKDcmsA7e9AxF/hw2XDlvvGnmlBKpTfOmCAg3RblcLkEEq+Vfs2xYsbvVMDg52H4F0/8MujQNmTw3ExCKNb/DHN1eNitK1KP1YPQjRoFNXwdXmeXx4hs5EMWrdUhzwKxhEprB/EBHJpNJvH5ZgS9s16eTMHm/3QetQOntmVg4W1+yQS9I+MRBEsUMQVLxnVkBdP8i5eJ+syULQKftw1OGTZaVvVSKjuMB7+Et8DuaEU6Y8EaQ0469HkWdb+WAyWrr6W/qv+5JfjY3QE5C0UtVLkw5KwrnhEP5ZeYqgk25z+qMCfBI6XFzoLdvMi2xVbN0D1hdILaoZxNw0clDrroAwMAsNkzEBFXa6LuBvEgRy94lV6UPFYmD7RZ8u3TWyO6146S+3y/uGl06lfW0wHj9UCz6uyoTRxqgCitIRb3lHtBH4Rp6F4UO8i63YyVRLwU/jRPEyRarhnwC5TeiNCK+Q9Bk/o2EkRHppj6YLDWqKv1YadDL2nlTQP6j8dK4oVTH4iG/RhKMX/jb2sBPJHR0TlJeyfaF9OHNMCDm0OjTo2NaWZ4RhKFcoXgWAGehLyjgMDcE+Dtgx90RTaG/tE/M+DJAJ/gUzX6KNqPr6RArV1gG9ygOtgcBkaYg=
-  app: Bechdel-Beyond-backend
-  on:
-    repo: fac19/Bechdel-Beyond-backend
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: hHO0AF0VBOD+ve+J/OqHL5dJmnRKS5z+mRcwzDniMvAJnBF+wRLKDcmsA7e9AxF/hw2XDlvvGnmlBKpTfOmCAg3RblcLkEEq+Vfs2xYsbvVMDg52H4F0/8MujQNmTw3ExCKNb/DHN1eNitK1KP1YPQjRoFNXwdXmeXx4hs5EMWrdUhzwKxhEprB/EBHJpNJvH5ZgS9s16eTMHm/3QetQOntmVg4W1+yQS9I+MRBEsUMQVLxnVkBdP8i5eJ+syULQKftw1OGTZaVvVSKjuMB7+Et8DuaEU6Y8EaQ0469HkWdb+WAyWrr6W/qv+5JfjY3QE5C0UtVLkw5KwrnhEP5ZeYqgk25z+qMCfBI6XFzoLdvMi2xVbN0D1hdILaoZxNw0clDrroAwMAsNkzEBFXa6LuBvEgRy94lV6UPFYmD7RZ8u3TWyO6146S+3y/uGl06lfW0wHj9UCz6uyoTRxqgCitIRb3lHtBH4Rp6F4UO8i63YyVRLwU/jRPEyRarhnwC5TeiNCK+Q9Bk/o2EkRHppj6YLDWqKv1YadDL2nlTQP6j8dK4oVTH4iG/RhKMX/jb2sBPJHR0TlJeyfaF9OHNMCDm0OjTo2NaWZ4RhKFcoXgWAGehLyjgMDcE+Dtgx90RTaG/tE/M+DJAJ/gUzX6KNqPr6RArV1gG9ygOtgcBkaYg=
+#   app: Bechdel-Beyond-backend
+#   on:
+#     repo: fac19/Bechdel-Beyond-backend

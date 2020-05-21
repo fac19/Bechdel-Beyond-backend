@@ -1,6 +1,6 @@
 BEGIN;
 
-    DROP TABLE IF EXISTS users, user_reviews, films, crew, films_crew
+    DROP TABLE IF EXISTS users, user_reviews, films, film_cast, films_crew
     CASCADE;
 
 CREATE TABLE users
@@ -8,7 +8,7 @@ CREATE TABLE users
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
-    userPassword VARCHAR(255),    
+    userPassword VARCHAR(255),
     adminusr BOOLEAN
 );
 
@@ -16,6 +16,7 @@ CREATE TABLE films
 (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
+    movAPI_id INTEGER,
     poster TEXT,
     year VARCHAR(255),
     rated VARCHAR(255),
@@ -32,8 +33,8 @@ CREATE TABLE films
 CREATE TABLE user_reviews
 (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id),
-    film_id INTEGER REFERENCES films(id),
+    user_id INTEGER,
+    movAPI_id INTEGER,
     bechdel_1 BOOLEAN NOT NULL,
     bechdel_2 BOOLEAN NOT NULL,
     bechdel_3 BOOLEAN NOT NULL,
@@ -42,20 +43,23 @@ CREATE TABLE user_reviews
     date TIMESTAMP
     WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TABLE crew
+CREATE TABLE film_cast
 (
     id SERIAL PRIMARY KEY,
-    img TEXT,
     name VARCHAR(255),
-    gender VARCHAR(255)
+    gender INTEGER,
+    character VARCHAR(255),
+    movAPI_id INTEGER
 );
 
 CREATE TABLE films_crew
 (
   id SERIAL PRIMARY KEY,
-  crew_id INTEGER REFERENCES crew(id),
-  films_id INTEGER REFERENCES films(id),
-  role VARCHAR(255)
+  director VARCHAR(255),
+  assistant_director VARCHAR(255),
+  producer VARCHAR(255),
+  gender_parity json,
+  movAPI_id INTEGER
 );
     INSERT INTO users
         (username, email, userPassword)
@@ -64,25 +68,25 @@ CREATE TABLE films_crew
         ('Chloe', 'chloe@chloe.com', '123');
 
     INSERT INTO films
-        (title, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings)
+        (title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings)
     VALUES
-        ('Titanic', 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCotMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', 'drama, romance', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '[{"Source":"Internet Movie Database","Value":"7.8/10"},{"Source":"Rotten Tomatoes","Value":"82%"},{"Source":"Metacritic","Value":"83/100"}]');
+        ('Titanic', 34,'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCotMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', 'drama, romance', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '[{"Source":"Internet Movie Database","Value":"7.8/10"},{"Source":"Rotten Tomatoes","Value":"82%"},{"Source":"Metacritic","Value":"83/100"}]');
 
     INSERT INTO user_reviews
-        (user_id, film_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment)
+        (user_id, movAPI_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment)
     VALUES
-        (1, 1, true, true, true, 3, 'I love it!'),
-        (2, 1, false, true, true, 2, 'I hate it!');
+        (1, 12, true, true, true, 3, 'I love it!'),
+        (2, 14, false, true, true, 2, 'I hate it!');
 
-    INSERT INTO crew
-        (img, name, gender)
+    INSERT INTO film_cast
+        (name, gender, character, movAPI_id)
     VALUES
-        ('https://m.media-amazon.com/images/M/MV5BMjI0MjMzOTg2MF5BMl5BanBnXkFtZTcwMTM3NjQxMw@@._V1_UX67_CR0,0,67,98_AL_.jpg', 'James Cameron', 'male');
+        ('James Cameron', 2, 'Judge', 3);
 
     INSERT INTO films_crew
-        (crew_id, films_id, role)
+        (director, assistant_director, producer, gender_parity,  movAPI_id)
     VALUES
-        (1, 1, 'director'),
-        (1, 1, 'writer');
-          
+        ('James', 'Ako', 'Gio','{ "male": 2, "female": 3, "notlisted": 34 }' , 3),
+        ('Gio', 'Chloe', 'Ako','{ "male": 2, "female": 3, "notlisted": 34 }' , 3);
+
     COMMIT;

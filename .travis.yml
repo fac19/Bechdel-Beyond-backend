@@ -7,7 +7,7 @@ cache:
   directories:
     - node_modules
 script:
-  - npm test
+  - npm i && npm test
   - npm run report-test
 # deploy:
 #   provider: heroku

@@ -1,8 +1,5 @@
 const express = require('express');
-<<<<<<< HEAD
 const cors = require('cors');
-=======
->>>>>>> 2ab325bc1028efc643c3a10491a8762f4903c6e3
 const handleError = require('./middleware/error');
 const setupMovies = require('./database/fetch');
 
@@ -84,8 +81,6 @@ server.get('/films', (req, res, next) => {
 				],
 			},
 
-<<<<<<< HEAD
-=======
 			{
 				title: 'Star Wars: Episode IV - A New Hope',
 				poster:
@@ -120,7 +115,6 @@ server.get('/user/:id', (req, res, next) => {
 
 // server.get('/', setupMovies)
 
->>>>>>> 2ab325bc1028efc643c3a10491a8762f4903c6e3
 server.use(handleError);
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));

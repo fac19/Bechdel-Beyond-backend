@@ -23,11 +23,12 @@ function getMovieDetails() {
 		fetch(`http://www.omdbapi.com/?t=${title}&apikey=${apikeyOMDB}`)
 			.then(checkResponse)
 			.then((movie) => {
+				const movieTitle = movie.Title.toLowerCase();
 				return db
 					.query(
 						`INSERT INTO films(title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,
 						[
-							movie.Title,
+							movieTitle,
 							id,
 							movie.Poster,
 							movie.Year,

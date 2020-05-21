@@ -1,11 +1,12 @@
 # Bechdel-Beyond-backend
 
-## Guidance Install on your local machine
+## Set up incturction to install the API on your local machine
+
 1. clone the repo
 2. in your terminal run `npm i`
-3. create a `.env` file in the root folder with the following inside: 
+3. create a `.env` file in the root folder with the following inside:
 
-```
+```env
 PGDATABASE=bbdev
 PGUSER=myuser
 PGPASSWORD=mypassword
@@ -18,7 +19,7 @@ Contact one of us to get api keys for movie APIs.
 
 4. change your terminal to `psql` or `pgcli` environment
 5. To setup a super user run following commands. if you have one already you can skip running this code in `psql` environment.
-   
+
  ```sql
 CREATE USER myuser WITH PASSWORD 'mypassword';
 ALTER USER myuser WITH SUPERUSER;
@@ -42,11 +43,16 @@ CREATE DATABASE bbtest WITH OWNER myuser;
 \i database/init.sql;
 ```
 
-1. to start the development server run `npm run dev`
-2. 
-## Routes
+Bear in mind that in our `package.json` runs tests from `bbtest` database and names in the `"test"` script and database have to match.
 
-The main route for the api end points is: `https://apibechdel.herokuapp.com/`
+8. You can exit `psql` or `pgcli` environment and you can run test by following command `npm run test`.
+
+9. To start the development server run `npm run dev`
+
+
+## Berchdel API routes
+
+The base URL for the api end points is: `https://apibechdel.herokuapp.com/`
 
 ### Users
 

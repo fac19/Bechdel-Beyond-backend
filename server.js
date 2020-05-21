@@ -11,7 +11,7 @@ server.use(cors());
 server.use(express.json());
 
 //server routes
-server.get('/', setupMovies);
+// server.get('/', setupMovies);
 server.post('/signup', signup);
 server.post('/login', logIn);
 

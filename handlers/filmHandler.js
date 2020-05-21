@@ -11,7 +11,7 @@ function getFilm(req, res, next) {
 	const title = req.params.title;
 	model
 		.getFilm(title)
-		.then((film) => res.send(film))
+		.then((film) => res.status(200).send(film))
 		.catch(next);
 }
 

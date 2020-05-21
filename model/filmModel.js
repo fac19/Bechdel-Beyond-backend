@@ -8,7 +8,7 @@ function getFilm(title) {
 	console.log(title);
 	return db
 		.query(`SELECT * from films WHERE title=($1)`, [title])
-		.then((result) => console.log(result.rows[0]));
+		.then((result) => result.rows[0]);
 }
 
 module.exports = { getAllFilms, getFilm };

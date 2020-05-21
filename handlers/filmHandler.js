@@ -3,7 +3,7 @@ const model = require('../model/filmModel');
 function getAllFilms(req, res, next) {
 	model
 		.getAllFilms()
-		.then((films) => console.log(films))
+		.then((films) => res.status(200).send(films))
 		.catch(next);
 }
 

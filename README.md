@@ -49,6 +49,12 @@ Bear in mind that in our `package.json` runs tests from `bbtest` database and na
 
 9. To start the development server run `npm run dev`
 
+10. This step is optional and can be skipped if you just intend to test the app but if you wish to populate your bbdev database with more data you can go to `server.js` file and uncomment the line 14, that is the home route.
+
+- after you can run development server again and go to home route once.(we had cases when we needed to go there twice 😆)
+- `/` route has a call back `setupMovies` function, that is defined at the end of `fetch.js` file.
+- purpose of whole `fetch.js` is to make fetch request to different APIs and gather resources that will be used for our app and store them in our database. At the moment we are working to optimise this process so developers won't need to run something like this manually.
+
 
 ## Berchdel API routes
 

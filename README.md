@@ -1,5 +1,7 @@
 [![codecov](https://codecov.io/gh/fac19/Bechdel-Beyond-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/fac19/Bechdel-Beyond-backend)
 
+[![Build Status](https://travis-ci.org/fac19/Bechdel-Beyond-backend.svg?branch=master)](https://travis-ci.org/fac19/Bechdel-Beyond-backend)
+
 # Bechdel-Beyond-backend
 
 ## Set up incturction to install the API on your local machine

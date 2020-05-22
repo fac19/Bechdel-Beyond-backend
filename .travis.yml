@@ -1,24 +1,24 @@
-# language: node_js
-# node_js:
-# - 12
-# env:
-# - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
-# cache:
-#   directories:
-#   - node_modules
-# services:
-# - postgresql
-# before_script:
-# - npm install
-# - psql -c 'create database bbtest;' -U postgres
-# script:
-# - npm run test
-# - npm run report-test
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: Yep5U3c/IYxeYNmYfoloLSlpbfgcGJPJSy+FTQJ7RZy3s5hezzLvuUz7yGdRreKmPJEEINDGK6EQ20wPrqwcvxs52CNz4YSPYr+9HBB8udYsZX6rA8t50iq7j1CqlMtppDdwN7r8OXKQyVy1RBfNStDvU+mrxeie0NIZY5kMFtrevLfFsvuhOfr00RfHaj8APL/qPX1c9do7dKWh1ZKsxTN2TFz7q8M/Wy7+96VzFAAPBILRkOB0nIiKeQV1eEOJAkpK86ZNvr6j1UdcYWNKkOHfmpEE/oZMuNuwvy0CprepaxjVklvsEGVwl3MEH3X3rU3bJVeVnCkNet0thLARm3AtaZKquAJLqPbMMkAEr8QdGkcWUxYEaAJa5OuD8dcIMIPulAL3lpBULhNoLTR+DAhsa5PbY/uT8GRbr08XZjv9ZtB0ub1/ccAKmyT0pVX6NH3ijLpPiOUwaP7IFUQK8lmvsFDKUJCZxmOw9bIgftatN4aRzx9ZL13JJY+g+5TAjwdnNMRWZS5HN6MFBGbTLi/Iq1uqD/beB4teC5N302Dmd8NFXPDhxsB64FI3hN8MmmvxpGKKYGQyjC70hwQ5kP0ZDEwl06TufUx7pnBGlkDrhdQC2AGac//58SgGhz7puYprP3msa7ZOJizaSuELmWH2hyi4CuIH8OQ6XGYOEgI=
-#   app: apibechdel
-#   on:
-#     repo: fac19/Bechdel-Beyond-backend
-#   skip_cleanup: 'true'
+language: node_js
+node_js:
+  - 12
+env:
+  - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
+cache:
+  directories:
+    - node_modules
+services:
+  - postgresql
+before_script:
+  - npm install
+  - psql -c 'create database bbtest;' -U postgres
+script:
+  - npm run test
+  - npm run report-test
+deploy:
+  provider: heroku
+  api_key:
+    secure: Yep5U3c/IYxeYNmYfoloLSlpbfgcGJPJSy+FTQJ7RZy3s5hezzLvuUz7yGdRreKmPJEEINDGK6EQ20wPrqwcvxs52CNz4YSPYr+9HBB8udYsZX6rA8t50iq7j1CqlMtppDdwN7r8OXKQyVy1RBfNStDvU+mrxeie0NIZY5kMFtrevLfFsvuhOfr00RfHaj8APL/qPX1c9do7dKWh1ZKsxTN2TFz7q8M/Wy7+96VzFAAPBILRkOB0nIiKeQV1eEOJAkpK86ZNvr6j1UdcYWNKkOHfmpEE/oZMuNuwvy0CprepaxjVklvsEGVwl3MEH3X3rU3bJVeVnCkNet0thLARm3AtaZKquAJLqPbMMkAEr8QdGkcWUxYEaAJa5OuD8dcIMIPulAL3lpBULhNoLTR+DAhsa5PbY/uT8GRbr08XZjv9ZtB0ub1/ccAKmyT0pVX6NH3ijLpPiOUwaP7IFUQK8lmvsFDKUJCZxmOw9bIgftatN4aRzx9ZL13JJY+g+5TAjwdnNMRWZS5HN6MFBGbTLi/Iq1uqD/beB4teC5N302Dmd8NFXPDhxsB64FI3hN8MmmvxpGKKYGQyjC70hwQ5kP0ZDEwl06TufUx7pnBGlkDrhdQC2AGac//58SgGhz7puYprP3msa7ZOJizaSuELmWH2hyi4CuIH8OQ6XGYOEgI=
+  app: apibechdel
+  on:
+    repo: fac19/Bechdel-Beyond-backend
+  skip_cleanup: 'true'

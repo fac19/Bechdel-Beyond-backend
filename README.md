@@ -4,7 +4,7 @@
 
 ## Set up incturction to install the API on your local machine
 
-1. clone the repo
+1. clone this repo
 2. in your terminal run `npm i`
 3. create a `.env` file in the root folder with the following inside:
 
@@ -22,7 +22,7 @@ Contact one of us to get api keys for movie APIs.
 4. change your terminal to `psql` or `pgcli` environment
 5. To setup a super user run following commands. if you have one already you can skip running this code in `psql` environment.
 
- ```sql
+```sql
 CREATE USER myuser WITH PASSWORD 'mypassword';
 ALTER USER myuser WITH SUPERUSER;
 ```
@@ -56,7 +56,6 @@ Bear in mind that in our `package.json` runs tests from `bbtest` database and na
 - after you can run development server again and go to home route once.(we had cases when we needed to go there twice 😆)
 - `/` route has a call back `setupMovies` function, that is defined at the end of `fetch.js` file.
 - purpose of whole `fetch.js` is to make fetch request to different APIs and gather resources that will be used for our app and store them in our database. At the moment we are working to optimise this process so developers won't need to run something like this manually.
-
 
 ## Berchdel API routes
 

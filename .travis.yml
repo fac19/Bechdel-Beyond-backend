@@ -1,24 +1,19 @@
 language: node_js
 node_js:
-  - 12
+- 12
 env:
-  - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
+- CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
 cache:
   directories:
-    - node_modules
+  - node_modules
 services:
-  - postgresql
+- postgresql
 before_script:
-  - npm install
-  - psql -c 'create database bbtest;' -U postgres
+- npm install
+- psql -c 'create database bbtest;' -U postgres
 script:
-  - npm run test
-  - npm run report-test
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: G7qCtGA8IeLpKQAdNoF4H+yeopkhxhvGeGdl9XMISIB1cSjbgqsNM51Y2JXzxCT48OA3TrjZDWiIR3d8Hx25CV/USfWyQprhMTEhJURkHNWBwmg0h+bmm4Jq/niP3B3w0Gu75mTU5zQnhNVf6NZP9Tbw0t37qRwjZJhB8GFRVW1OCqEW/qneyhBE5cQUsamCppLJtnTjzeBzSgdELnu4XUcNLscnjzCOORPyMWLoWdWIq5buR+Xq8lnCYa/PAEobFnmj3rJmo9TDjoC8s51z0illlEP/jal7kDRQNevIEx8cZXrD5WNfPQDeSxFIIl84qJ3+hLzRgAueur+GrC6b+qIZZKL+3rn3/hXX4Md61zRQbLdy2PxPGLv0Nh+CbYXw8hv6Jwub3f1YpGBbBY9pt4R7K2++2tO9eXVxe7NwfdjMUI3fIQ1HpgxGoPegUIm8iuqNZedLyDrhnFKdDUinpiiolyLxFOlacERXADBZ3yIue2KjGIm9rGKi0D9VQzsmexpE5vZx7gO45jmQ8Mo89E3aMLgwwcWaYHpDamQXnUbQSQeiRBRe47NkDDaOHC/BUL9h2fOSXGBGS7UTEMmBXtp3CbZrEgbqRAQBcSwja0H6YrIibZhwICwsI4XwOF3INbBKKm2usmOHN3HG4wVpBkB5yYqdY6ED3Yj0r1FHAgI=
-#   app: Bechdel-Beyond-backend
-#   on:
-#     repo: fac19/Bechdel-Beyond-backend
-#   skip_cleanup: 'true'
+- npm run test
+- npm run report-test
+deploy:
+  api_key:
+    secure: WaVLVQEbYwXLpG3ZrMiHcYSjwGZpdvsumTQ1X5dNg+Aj4I5kFGiVjEFSHMJK6BU55TCG0GrK5ATG9OL4dqDokJdUoYO1gGFKFQl6jPRLvLEyB7RZPrVD91xLxngBV08s/ez1LMSXygcDpegMFcrWcIcMOnGsyhKYCLVL3gKZNC6fBrWFn9DzViH4rEvLuDQ4WlXqdx4/KNCZov0xMfFRgjYBFx6UryAnAlgadpeaa9Kuc0smMq9RcVE4b3DUrWsi1bREEcRDget7h53EHCfmKm9pBRzw5k6p1UxHn1GaN7bSwWXuO8hCgUZcdwUyB0t8rnKjWCB2U9CfVuWyi9k1uTB4S8S0nM3wwcu1FECCUZ/wwysEKXSYONcK8U/6t6aZ3lWXJErk01h0b6VqCSl2YoRJ01FlHkSQ52RbEUu+0YOJzG8gIjFfVd1ZM46aBHqOrsMQna/bnyHUtlCBJvnWHF1/jbyHpU5e286OXJhF6k3Q2oMFHcHUMpQe0PEJx6DTDFYLfBTL6fPJRwf2bPew+lWt4cuVCO/1Lvau/aOCEz2TpnEimLMMw647OZOGYe8q03NAZ3vNLb0R723ZyPnv98yDjpNA3ZVzOkVpiXfUt4Fvf2O5SwSIOz50K20PtjO/Ecl/WGMu20nfeYJHRQ54Ziep3YlJgS+Oq8+vW7paa8M=

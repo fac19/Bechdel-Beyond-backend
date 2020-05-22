@@ -28,7 +28,7 @@ ALTER USER myuser WITH SUPERUSER;
 6. If you are having issues with anything related to accessing the databases you have created, you may need to grant privileges:
 
 ```sql
-GRANT ALL PRIVILEGES ON DATABASE week7cado_db TO myuser;
+GRANT ALL PRIVILEGES ON DATABASE bbdev TO myuser;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO myuser;
 ```
 

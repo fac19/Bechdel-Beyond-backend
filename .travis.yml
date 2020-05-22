@@ -1,23 +1,23 @@
 language: node_js
 node_js:
-  - 12
+- 12
 env:
-  - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
+- CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
 cache:
   directories:
-    - node_modules
+  - node_modules
 services:
-  - postgresql
+- postgresql
 before_script:
-  - npm install
-  - psql -c 'create database bbtest;' -U postgres
+- npm install
+- psql -c 'create database bbtest;' -U postgres
 script:
-  - npm run test
-  - npm run report-test
+- npm run test
+- npm run report-test
 deploy:
   provider: heroku
   api_key:
-    secure: Yep5U3c/IYxeYNmYfoloLSlpbfgcGJPJSy+FTQJ7RZy3s5hezzLvuUz7yGdRreKmPJEEINDGK6EQ20wPrqwcvxs52CNz4YSPYr+9HBB8udYsZX6rA8t50iq7j1CqlMtppDdwN7r8OXKQyVy1RBfNStDvU+mrxeie0NIZY5kMFtrevLfFsvuhOfr00RfHaj8APL/qPX1c9do7dKWh1ZKsxTN2TFz7q8M/Wy7+96VzFAAPBILRkOB0nIiKeQV1eEOJAkpK86ZNvr6j1UdcYWNKkOHfmpEE/oZMuNuwvy0CprepaxjVklvsEGVwl3MEH3X3rU3bJVeVnCkNet0thLARm3AtaZKquAJLqPbMMkAEr8QdGkcWUxYEaAJa5OuD8dcIMIPulAL3lpBULhNoLTR+DAhsa5PbY/uT8GRbr08XZjv9ZtB0ub1/ccAKmyT0pVX6NH3ijLpPiOUwaP7IFUQK8lmvsFDKUJCZxmOw9bIgftatN4aRzx9ZL13JJY+g+5TAjwdnNMRWZS5HN6MFBGbTLi/Iq1uqD/beB4teC5N302Dmd8NFXPDhxsB64FI3hN8MmmvxpGKKYGQyjC70hwQ5kP0ZDEwl06TufUx7pnBGlkDrhdQC2AGac//58SgGhz7puYprP3msa7ZOJizaSuELmWH2hyi4CuIH8OQ6XGYOEgI=
+    secure: kNmkINpFFV1S2qheAD61lfnECHNZm8JGmmCbHwp02N6WC/Bo1oBFzRHgxkAolGQiw0Gv8usQyF3oGG0s2uN79dpis7N/HRBpINWbspa+43LX/0azirnZjz5AbGQsITyAP5IpMfreBSfhaUUFDB87ZuWN8sJdP/nWOHI3TMyi3/pAo6mnW+4u1B0L2lZlM4w948voM44zdhz4Pi7Zx3gaysa4+LVdipeQL8tcKrpQvFdLlKJ4nljSdoqUY5DhhNAFuy4qhV7W2faQ+5VQzqgNLemVQ/afGOYcnEtOSs8VQ7NJTW6IgzwpDjlOOEM0yRSukGJdp9I/f7p5fI3kajM3XRepyyedCV87nSy6QtWMdsLbexBhxnEqXB8y9Md41wdNX8XuDnJ1XL1uuHWHVs9NNHF2z2dMS6qlvH83OFD5evmAG47Tqmf3O4adHLKnnzkyZ2TMsKg/x1nMzkJicw/oIw19T4SBvrxiN9T+TxhIZdlnGNbtae97OtnpFJUeFMv+1te+2o42hS+lIXaBaf7f2kf2c5E4Rzp5DYeOJaRlZqcCA3V4VS3AeOHVsQDTeSxeuY/pCwNGewFDQQDGfNomxXtXbr767iME+zpxdXb0eW0UzwQN9ei/O/AAtt1OPMH0YTAtef1RLisVAzCA5DOhYY1yluPrVUxOEwVyxVCIE9s=
   app: apibechdel
   on:
     repo: fac19/Bechdel-Beyond-backend

@@ -1,24 +1,16 @@
 language: node_js
 node_js:
-- 12
+  - 12
 env:
-- CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
+  - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
 cache:
   directories:
-  - node_modules
+    - node_modules
 services:
-- postgresql
+  - postgresql
 before_script:
-- npm install
-- psql -c 'create database bbtest;' -U postgres
+  - npm install
+  - psql -c 'create database bbtest;' -U postgres
 script:
-- npm run test
-- npm run report-test
-deploy:
-  provider: heroku
-  api_key:
-    secure: bzWAnB1jVvVvOmSSrVxtKyLSYKUsqsP0zoXa9+0gsvCmo6lF6tzPhcT6vFn/TQWr2sH60MQUENAda8MrORbc26g185cuXXHUivgD/SWasLsokfEvIYKhC7LhCtfRvS4GnCRu87Paj1OSBq96WjuiKDVaDpcNY6Fnt9nS4qcZ9vyPCvVXrDOUYUJdjc4bxUXjOWOMyhUt6qgb5ilocnKaF27CAHGNMovbIr9szOvkaDHmgg/u8eBPbbj0lJ9L25TEO7dGX+X1KeRKVNJ840obgxz7rujMTqi5AebfJnk+PIoShPAi2ttKGAtyXed4iz5qd3MNeKg9PiRErxrviAuUAmcYHwSaVjRqGVh5ORWL5UqrgrPxfrt7i0tPIeZmmTeTLhD1hU1z9Dsi7KuCl6+oamTLYq6PWNpNWCG4/He7ujjwETXdxdWTCNzfuU9/bbZl8IQ2OlGCi3VEfacnF7iFjvQfz8QWZMP5Hvy0h/6Gb7V/TCITCMZP3hIw4h9kpmBnH39oAgWtfE/Kiu0DxBFsdUw6WjqrMyHqLG4VGxrGQNYqFBp7d+un1fG493OSfMz8tuOT6OQ4VlNuU9qomIMX7hGiOuN7Cit7EGcMIMyz0mFrAcbeWlyN7pJaDxojyQmyyrRrTUD+hfQp66V0q4dbGgfefd5JhQPajOEa5FBDPXs=
-  app: apibechdel
-  on:
-    repo: fac19/Bechdel-Beyond-backend
-  skip_cleanup: 'true'
+  - npm run test
+  - npm run report-test

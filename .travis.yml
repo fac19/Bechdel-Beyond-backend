@@ -8,8 +8,13 @@ env:
 cache:
   directories:
     - node_modules
+services:
+  - postgresql
+before_script:
+  - npm install
+  - psql -c 'create database bbtest;' -U postgres
 script:
-  - npm i && npm test
+  - npm run test
   - npm run report-test
 # deploy:
 #   provider: heroku

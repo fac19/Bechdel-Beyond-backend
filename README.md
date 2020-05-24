@@ -6,7 +6,7 @@
 
 ## Set up incturction to install the API on your local machine
 
-1. clone this repo
+1. clone the repo
 2. in your terminal run `npm i`
 3. create a `.env` file in the root folder with the following inside:
 

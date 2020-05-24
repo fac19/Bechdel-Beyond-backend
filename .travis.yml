@@ -14,11 +14,11 @@ before_script:
 script:
   - npm run test
   - npm run report-test
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: dsqt8n+b6LoI3n8muzXQ9r8r26bApC8anxi3EciqGt2XrEvxlto3WqguhpgDGFLpzklA3Uxdjf7tj+kA+SL+SEp4Nh4xZdYCh/+88ia0G5b5Et69HPncQEoxk7/HT7AbpkM2Dmlm23WEh0U3IFY6CxX6ZLqXLYiFhjNjIiFQb1TZ4oLhwqvMPPp6PZyZAJLIENYSFGm0QjMxY7E3vBG36BqqHdeh9eULi1ys8zbIdkoC1ATrL+gnC2srG5vHmKoaaDZV47ApN/66f9dEgO0dlAwJImuw2NP6t1NePcd6OH21dN6jEDQi5H+6A88XC1Gjh/wABcpodXWg147yux9kuJDHviJccLIoXiI9uu+K+LbeCAJE/5EJqz3HeTEH0eD/kKA8MBoOB/La9UHlPSVOL416d4uyjhbk7ptvlowZSzAa4kIa1KXxpY4MMgeBR/v1hwL9KAlJOYmDzVot+zDIE1Pp2kCcYmDB7Y55h/bFPAQgERgK4OGRWUDqA+4lg0hNjR4gapfer3nZX7SUmQW/6/9p2rb/+s9osd5vr89YfeHAl3zWqE5xy0IHx8xeoBJLHG61UJubmFVQFVhdKt6M+e+s+Ez/H/YwSpKoQIEqJyDtuBcNPaLJOd8siqwtOFFe5dD1dNXilq0O/8kb4cISFtnrNCUiKOQ/tUex/yTZ1rQ=
-#   app: apibechdel
-#   on:
-#     repo: fac19/Bechdel-Beyond-backend
-#   skip_cleanup: 'true'
+deploy:
+  provider: heroku
+  api_key:
+    secure: dsqt8n+b6LoI3n8muzXQ9r8r26bApC8anxi3EciqGt2XrEvxlto3WqguhpgDGFLpzklA3Uxdjf7tj+kA+SL+SEp4Nh4xZdYCh/+88ia0G5b5Et69HPncQEoxk7/HT7AbpkM2Dmlm23WEh0U3IFY6CxX6ZLqXLYiFhjNjIiFQb1TZ4oLhwqvMPPp6PZyZAJLIENYSFGm0QjMxY7E3vBG36BqqHdeh9eULi1ys8zbIdkoC1ATrL+gnC2srG5vHmKoaaDZV47ApN/66f9dEgO0dlAwJImuw2NP6t1NePcd6OH21dN6jEDQi5H+6A88XC1Gjh/wABcpodXWg147yux9kuJDHviJccLIoXiI9uu+K+LbeCAJE/5EJqz3HeTEH0eD/kKA8MBoOB/La9UHlPSVOL416d4uyjhbk7ptvlowZSzAa4kIa1KXxpY4MMgeBR/v1hwL9KAlJOYmDzVot+zDIE1Pp2kCcYmDB7Y55h/bFPAQgERgK4OGRWUDqA+4lg0hNjR4gapfer3nZX7SUmQW/6/9p2rb/+s9osd5vr89YfeHAl3zWqE5xy0IHx8xeoBJLHG61UJubmFVQFVhdKt6M+e+s+Ez/H/YwSpKoQIEqJyDtuBcNPaLJOd8siqwtOFFe5dD1dNXilq0O/8kb4cISFtnrNCUiKOQ/tUex/yTZ1rQ=
+  app: apibechdel
+  on:
+    repo: fac19/Bechdel-Beyond-backend
+  skip_cleanup: 'true'

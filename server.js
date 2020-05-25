@@ -35,3 +35,5 @@ server.post('/film/:title/reviews', postReview);
 server.use(handleError);
 
 server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+
+module.exports = server;

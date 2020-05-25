@@ -1,10 +1,11 @@
 const db = require('../database/connection.js');
 
-function getFilmReviews(id) {
+function getFilmReviews(title) {
 	return db
 		.query(
 			`SELECT films.title,
             user_reviews.id,
+            user_reviews.movAPI_id,
             user_reviews.user_id,
             user_reviews.bechdel_1,
             user_reviews.bechdel_2,
@@ -12,8 +13,8 @@ function getFilmReviews(id) {
             user_reviews.beyond,
             user_reviews.comment,
             user_reviews.date
-             FROM user_reviews RIGHT JOIN films ON films.movAPI_id = user_reviews.movAPI_id WHERE films.movAPI_id=($1)`,
-			[id],
+             FROM user_reviews RIGHT JOIN films ON films.movAPI_id = user_reviews.movAPI_id WHERE films.title=($1)`,
+			[title],
 		)
 		.then((res) => res.rows);
 }

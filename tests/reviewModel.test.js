@@ -9,12 +9,14 @@ const {
 	// deleteReview,
 } = require('../model/reviewModel');
 
+// console.groupCollapsed('TEST: Can get and post reviews');
+
 test('Can get reviews for one given film', (t) => {
 	build()
 		.then(() => {
-			getFilmReviews(12).then((res) => {
+			getFilmReviews('Star Wars: Episode IV - A New Hope').then((res) => {
 				t.equal(res.length, 2, 'Returns two reviews');
-				t.equal(res[0].title, 'Star Wars: Episode IV - A New Hope', 'Movie title is Star Wars');
+				t.equal(res[0].movapi_id && res[1].movapi_id, 12, 'Both movAPI_id are 12');
 				t.equal(res[0].user_id, 1, 'User id is correct');
 				t.end();
 			});
@@ -40,7 +42,7 @@ test('Can get reviews from one user', (t) => {
 		});
 });
 
-test.only('Can post a review', (t) => {
+test('Can post a review', (t) => {
 	const review = {
 		user_id: 2,
 		movAPI_id: 12,
@@ -54,7 +56,7 @@ test.only('Can post a review', (t) => {
 	build()
 		.then(() => {
 			postReview(review)
-				.then(() => getFilmReviews(12))
+				.then(() => getFilmReviews('Star Wars: Episode IV - A New Hope'))
 				.then((res) => {
 					t.equal(res.length, 3, 'New review added');
 					t.equal(res[res.length - 1].comment, 'Horrible!', 'New comment added');
@@ -66,3 +68,5 @@ test.only('Can post a review', (t) => {
 			t.end();
 		});
 });
+
+// console.groupEnd('TEST: Can get and post reviews');

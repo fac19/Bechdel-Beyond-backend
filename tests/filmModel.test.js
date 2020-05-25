@@ -9,11 +9,8 @@ test('All films are showing in database', (t) => {
 			getAllFilms().then((res) => {
 				t.equal(res.length, 2, '2 movies in db');
 				t.equal(res[0].title, 'Titanic', 'Titanic is first movie');
-				t.equal(
-					res[1].title,
-					'Star Wars: Episode IV - A New Hope',
-					'Star Wars is second movie',
-				);
+				// eslint-disable-next-line max-len
+				t.equal(res[1].title, 'Star Wars: Episode IV - A New Hope', 'Star Wars is second movie');
 				t.end();
 			});
 		})
@@ -29,6 +26,7 @@ test('Able to get a film by title', (t) => {
 			.then((res) => {
 				t.equal(res.title, 'Titanic', 'Title is the same');
 				t.equal(res.runtime, '194 min', 'Runtime is 194 min');
+				// eslint-disable-next-line max-len
 				t.equal(Object.keys(res).length, 14, 'There are 14 keys in the object');
 				t.end();
 			})

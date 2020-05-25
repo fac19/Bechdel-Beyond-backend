@@ -28,7 +28,7 @@ test('Can create new user', (t) => {
 	});
 });
 
-test('Can  not create dublicate users', (t) => {
+test('Can  not create duplicate users', (t) => {
 	build().then(() => {
 		const user = {
 			username: 'Gio',

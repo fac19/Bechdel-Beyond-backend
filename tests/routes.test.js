@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const server = require('../server');
 const build = require('../database/build');
 
-test('Test /examples POST route with valid auth token', (t) => {
+//change this. Example only
 	build().then(() => {
 		const token = jwt.sign(
 			{

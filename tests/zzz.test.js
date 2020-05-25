@@ -4,6 +4,6 @@ const test = require('tape');
 const db = require('../database/connection');
 
 test('Close DB', (t) => {
-  db.end();
-  t.end();
+	db.end();
+	t.end();
 });

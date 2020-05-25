@@ -34,6 +34,9 @@ server.get('/user/:id/reviews', getUserReviews);
 
 server.use(handleError);
 
-server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+// If this env exists we are in testing mode so don't start the server
+if (process.env.PGDATABASE !== 'bbtest') {
+	server.listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
+}
 
 module.exports = server;

@@ -18,6 +18,7 @@ server.post('/login', logIn);
 server.get('/films', getAllFilms);
 
 server.get('/film/:title', getFilm);
+server.post('/film/:title/reviews', postReview);
 
 // server.get('/user/:id', )
 

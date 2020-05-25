@@ -83,8 +83,10 @@ The base URL for the api end points is: `https://apibechdel.herokuapp.com/`
 
 ### Reviews(The paths currently don't work)
 
-| Path                   | Method   | Body                                                                                                                 | Example response |
-| ---------------------- | -------- | -------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| `/film/:title/reviews` | `GET`    | `[{ "user_id": "1", "film_id": "1", "bechdel": "true", "beyond": "3", "comment": "I loved it!"}, {"user_id": 5...}]` |
-| `/user/:id/reviews`    | `GET`    | `[{ "film_id": "1", "bechdel": "true", "beyond": "3", "comment": "I loved it!"}, {"film_id": "5"...}]`               |
-| `/reviews/:id`         | `DELETE` | n/a                                                                                                                  | n/a              |
+| Path                    | Method   | Body                                                                                                                                                             | Example response |
+| ----------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `/film/:title/reviews`  | `GET`    | `[{ "user_id": "1", "film_id": "1", "bechdel": "true", "beyond": "3", "comment": "I loved it!"}, {"user_id": 5...}]`                                             |                  |
+| `/film/:title/reviews`  | `POST`   | `[{ "user_id": "1", "film_id": "1", "bechdel_1": "true", "bechdel_2": "true", "bechdel_3": "true", "beyond": "3", "comment": "I loved it!"}, {"user_id": 5...}]` |                  |
+| `/user/:id/reviews`     | `GET`    | `[{ "film_id": "1", "bechdel": "true", "beyond": "3", "comment": "I loved it!"}, {"film_id": "5"...}]`                                                           |                  |
+| `/user/:id/reviews/:id` | `DELETE` | n/a                                                                                                                                                              | n/a              |
+| `/user/:id/reviews/:id` | `PUT`    |                                                                                                                                                                  | n/a              |

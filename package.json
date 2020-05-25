@@ -12,7 +12,8 @@
 		"test": "PGDATABASE=bbtest nyc tape tests/*.test.js | tap-spec",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged",
-		"report-test": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+		"report-test": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+		"fetch": "node fetch.js"
 	},
 	"husky": {
 		"hooks": {

@@ -1,12 +1,12 @@
-const db = require("./connection");
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
+const db = require('./connection');
 
-const initPath = path.join(__dirname, "init.sql");
-const initSql = fs.readFileSync(initPath, "utf-8");
+const initPath = path.join(__dirname, 'init.sql');
+const initSql = fs.readFileSync(initPath, 'utf-8');
 
 function build() {
-  return db.query(initSql);
+	return db.query(initSql);
 }
 
 // Allows build to be ran on the command line, npm run setupdb will now run build()

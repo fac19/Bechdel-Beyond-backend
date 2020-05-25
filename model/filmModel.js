@@ -5,10 +5,16 @@ function getAllFilms() {
 }
 
 function getFilm(title) {
-	console.log(title);
 	return db
 		.query(`SELECT * from films WHERE title=($1)`, [title])
-		.then((result) => result.rows[0]);
+		.then((result) => {
+			if (result.rows.length < 1) {
+				const error = new Error('Film does not exist');
+				error.status = 404;
+				throw error;
+			}
+			return result.rows[0];
+		});
 }
 
 module.exports = { getAllFilms, getFilm };

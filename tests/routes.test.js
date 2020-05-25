@@ -30,7 +30,7 @@ test('Test GET/film/:title route', (t) => {
 	});
 });
 
-test.only('test GET/films route', (t) => {
+test('test GET/films route', (t) => {
 	build().then(() => {
 		supertest(server)
 			.get('/films')

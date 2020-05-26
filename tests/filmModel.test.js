@@ -40,7 +40,7 @@ test('Able to get a film by title', (t) => {
 test('Returns an error if no film title match', (t) => {
 	build().then(() => {
 		getFilm('titanik').catch((err) => {
-			t.equal(err.message, 'Film does not exist in our database', 'Correct error');
+			t.equal(err.message, 'Film does not exist in our database', 'Correct error message');
 			t.equal(err.status, 404, 'Status code is 404');
 			t.end();
 		});

@@ -1,6 +1,5 @@
 const model = require('../model/reviewModel');
-
-// bechdel rate to return boolean
+const { getFilmId } = require('../model/filmModel');
 
 function getFilmReviews(req, res, next) {
 	const filmTitle = req.params.title;
@@ -19,9 +18,7 @@ function getUserReviews(req, res, next) {
 }
 
 function postReview(req, res, next) {
-	// const reviewBody = req.body;
-	model
-		.getFilmId(req.params.title)
+	getFilmId(req.params.title)
 		.then((filmId) => {
 			const userId = req.user.user_id;
 			const reviewHeader = {

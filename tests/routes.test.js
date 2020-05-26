@@ -131,3 +131,28 @@ test('Test POST /login route', (t) => {
 			});
 	});
 });
+
+test('Test POST /film/:title/reviews', (t) => {
+	const review = {
+		user_id: 2,
+		movAPI_id: 12,
+		bechdel_1: true,
+		bechdel_2: true,
+		bechdel_3: true,
+		beyond: 3,
+		comment: 'Horrible!',
+	};
+
+	build().then(() => {
+		supertest(server)
+			.post('/film/titanic/reviews')
+			.send(review)
+			.expect(201)
+			.expect('content-type', 'application/json; charset=utf-8')
+
+			.catch((err) => {
+				t.error(err);
+				t.end();
+			});
+	});
+});

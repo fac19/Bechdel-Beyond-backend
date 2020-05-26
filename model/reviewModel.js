@@ -56,14 +56,8 @@ function postReview(review) {
 		.then((res) => res.rows[0]);
 }
 
-function getFilmId(title) {
-	return db
-		.query(`SELECT movAPI_id FROM films WHERE title=($1)`, [title])
-		.then((res) => res.rows[0]);
-}
 module.exports = {
 	getFilmReviews,
 	getUserReviews,
 	postReview,
-	getFilmId,
 };

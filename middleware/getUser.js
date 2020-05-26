@@ -15,7 +15,6 @@ function extractToken(req) {
 }
 
 function getUser(req, res, next) {
-	// const token = req.cookies.token;
 	const token = extractToken(req);
 	if (token) {
 		const user = jwt.verify(token, secret);

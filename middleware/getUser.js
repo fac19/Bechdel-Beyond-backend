@@ -14,6 +14,8 @@ function extractToken(req) {
 	return null;
 }
 
+// TODO - Test this!
+
 function getUser(req, res, next) {
 	const token = extractToken(req);
 	if (token) {

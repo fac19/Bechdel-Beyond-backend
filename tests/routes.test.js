@@ -1,8 +1,10 @@
 const supertest = require('supertest');
 const test = require('tape');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const server = require('../server');
 const build = require('../database/build');
+
+require('dotenv').config();
 
 test('Route tests are running!', (t) => {
 	const x = 5;
@@ -133,25 +135,27 @@ test('Test POST /login route', (t) => {
 });
 
 test('Test POST /film/:title/reviews', (t) => {
+	const token = jwt.sign({ user_id: 3 }, process.env.SECRET, {
+		expiresIn: '1h',
+	});
 	const review = {
-		user_id: 2,
-		movAPI_id: 12,
 		bechdel_1: true,
 		bechdel_2: true,
 		bechdel_3: true,
 		beyond: 3,
 		comment: 'Horrible!',
 	};
-
 	build().then(() => {
 		supertest(server)
 			.post('/film/titanic/reviews')
+			.set({ Authorization: `Bearer ${token}` })
 			.send(review)
 			.expect(201)
 			.expect('content-type', 'application/json; charset=utf-8')
-
-			.catch((err) => {
-				t.error(err);
+			.end((err, res) => {
+				t.equals(res.body.user_id, 3, 'user ID is correct');
+				t.equals(res.body.movapi_id, 34, 'correct film id was added to Db');
+				if (err) throw err;
 				t.end();
 			});
 	});

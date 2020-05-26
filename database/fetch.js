@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-
 const db = require('./connection');
 
 const apikeyTMDB = process.env.APIKEYTMDB;
@@ -20,11 +19,13 @@ function checkResponse(res) {
 }
 
 function getMovieDetails() {
+	console.log("movietitles got filled up", movieTitles)
 	movieTitles.forEach(({ title, id, imdbid }) => {
 		fetch(`http://www.omdbapi.com/?t=${title}&apikey=${apikeyOMDB}`)
 			.then(checkResponse)
 			.then((movie) => {
 				const movieTitle = movie.Title.toLowerCase();
+				console.log("before query")
 				return db
 					.query(
 						`INSERT INTO films(title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,
@@ -44,10 +45,14 @@ function getMovieDetails() {
 							movie.Metascore,
 						],
 					)
-					.then((res) => res.rows[0]);
+					.then((res) => {
+						console.log('inserted into db')
+						return res.rows[0]
+          })
+          .catch(console.error);
 			})
 			.catch(console.error);
-		//is title in bedchel api? then insert bechdel info in to reviews
+		// is title in bedchel api? then insert bechdel info in to reviews
 		fetch(`http://bechdeltest.com/api/v1/getMovieByImdbId?imdbid=${imdbid}`)
 			.then((response) => response.json())
 			.then((movie) => {
@@ -130,23 +135,20 @@ function getMovieCrew() {
 }
 
 function setupMovies() {
-	console.log("started setupmovies")
-  let i = 0;
+
 	return fetch(
 		`https://api.themoviedb.org/3/discover/movie?api_key=${apikeyTMDB}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`,
 	)
 		.then((data) => data.json())
 		.then((result) => {
-			console.log(result)
-      const moviesArr = result.results;
-			if (i <= 20) {
-				moviesArr.map((movie) => {
-					fetch(
+         const moviesArr = result.results;
+		 moviesArr.length=20;
+		 let imdbPromiseArray = moviesArr.map((movie) => {
+					return fetch(
 						`https://api.themoviedb.org/3/movie/${movie.id}/external_ids?api_key=${apikeyTMDB}`,
 					)
 						.then((data) => data.json())
 						.then((response) => {
-							console.log(response)
 							let imdb = response.imdb_id.replace('tt', '');
 							movieTitles.push({
 								title: movie.title,
@@ -154,15 +156,19 @@ function setupMovies() {
 								imdbid: imdb,
 							});
 							movieIds.push(movie.id);
-							i++;
 						});
 				});
-			}
-			return movieTitles;
+				
+				return Promise.all(imdbPromiseArray)
+				.then(values => {
+					getMovieDetails();
+					// getMovieCrew();
+				})
+				.catch(console.error)
 		})
-		.then(getMovieDetails)
-		.then(getMovieCrew)
 		.catch(console.error);
 }
+
 setupMovies()
+
 module.exports = setupMovies;

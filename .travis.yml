@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - 12
 env:
-  - CODECOV_TOKEN=062e67b2-5aec-4fab-8455-d9819e510457
 cache:
   directories:
     - node_modules

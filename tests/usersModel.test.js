@@ -18,7 +18,7 @@ test('Can create new user', (t) => {
 		};
 		createUser(user)
 			.then((userId) => {
-				t.equal(userId, 3, 'User Id is equal to 3');
+				t.equal(userId, 4, 'User Id is equal to 4');
 				t.end();
 			})
 			.catch((err) => {
@@ -28,7 +28,7 @@ test('Can create new user', (t) => {
 	});
 });
 
-test('Can  not create duplicate users', (t) => {
+test('Can not create duplicate users', (t) => {
 	build().then(() => {
 		const user = {
 			username: 'Gio',
@@ -48,14 +48,14 @@ test('Can  not create duplicate users', (t) => {
 	});
 });
 
-// test('Returns error if no user found', (t) => {
-//   build().then(() => {
-//     getUser('hello@iscool.com').catch((err) => {
-//       t.throws(err.message, 'User does not ex');
-//       t.end();
-//     });
-//   });
-// });
+test('Returns error if no user found', (t) => {
+	build().then(() => {
+		getUser('hello@iscool.com').catch((err) => {
+			t.throws(err.message, 'User does not exist');
+			t.end();
+		});
+	});
+});
 
 test('Returns user with a given email address', (t) => {
 	build().then(() => {

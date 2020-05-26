@@ -1,20 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const handleError = require('./middleware/error');
+const getUserMiddleware = require('./middleware/getUser');
 // const setupMovies = require('./database/fetch');
 const { signup, logIn } = require('./handlers/userHandler');
 const { getAllFilms, getFilm } = require('./handlers/filmHandler');
-const { getFilmReviews, getUserReviews } = require('./handlers/reviewHandler');
+const { getFilmReviews, getUserReviews, postReview } = require('./handlers/reviewHandler');
 
 const PORT = process.env.PORT || 3001;
 const server = express();
 server.use(cors());
 server.use(express.json());
+server.use(getUserMiddleware);
+
+// server.get('/', setupMovies); -> Only use to populate production db
 
 // server routes
-
-// server.get('/', setupMovies);
-
 // Users
 server.post('/signup', signup);
 server.post('/login', logIn);
@@ -26,11 +27,7 @@ server.get('/film/:title', getFilm);
 // Reviews
 server.get('/film/:title/reviews', getFilmReviews);
 server.get('/user/:id/reviews', getUserReviews);
-// server.post('/film/:title/reviews', postReview);
-
-// Stretch goals
-// server.put('/user/:id/reviews/:id', editReview);
-// server.delete('/user/:id/reviews/:id', deleteReview);
+server.post('/film/:title/reviews', postReview);
 
 server.use(handleError);
 

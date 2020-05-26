@@ -5,6 +5,7 @@ const getUserMiddleware = require('./middleware/getUser');
 const { signup, logIn } = require('./handlers/userHandler');
 const { getAllFilms, getFilm } = require('./handlers/filmHandler');
 const { getFilmReviews, getUserReviews, postReview } = require('./handlers/reviewHandler');
+const { getFilmCrew, getFilmCast } = require('./handlers/crewHandler');
 
 const PORT = process.env.PORT || 3001;
 const server = express();
@@ -25,6 +26,10 @@ server.get('/film/:title', getFilm);
 server.get('/film/:title/reviews', getFilmReviews);
 server.get('/user/:id/reviews', getUserReviews);
 server.post('/film/:title/reviews', postReview);
+
+// crew and cast data
+server.get('/film/:title/crew', getFilmCrew);
+server.get('/film/:title/cast', getFilmCast);
 
 server.use(handleError);
 

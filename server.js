@@ -7,7 +7,7 @@ const { signup, logIn } = require('./handlers/userHandler');
 const { getAllFilms, getFilm } = require('./handlers/filmHandler');
 const { getFilmReviews, getUserReviews, postReview } = require('./handlers/reviewHandler');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const server = express();
 server.use(cors());
 server.use(express.json());

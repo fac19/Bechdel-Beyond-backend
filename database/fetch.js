@@ -173,7 +173,7 @@ function setupMovies() {
 		.then((result) => {
 			const moviesArr = result.results;
 			moviesArr.length = 20;
-			let imdbPromiseArray = moviesArr.map((movie) => {
+			const imdbPromiseArray = moviesArr.map((movie) => {
 				return fetch(
 					`https://api.themoviedb.org/3/movie/${movie.id}/external_ids?api_key=${apikeyTMDB}`,
 				)

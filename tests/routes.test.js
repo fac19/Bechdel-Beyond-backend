@@ -12,6 +12,35 @@ test('Route tests are running!', (t) => {
 	t.end();
 });
 
+test('Test GET/film/:title/crew', (t) => {
+	build().then(() => {
+		supertest(server)
+			.get('/film/titanic/crew')
+			.expect(200)
+			.expect('content-type', 'application/json; charset=utf-8')
+			.end((err, res) => {
+				t.equals(res.body.movapi_id, 34, 'Request responses with correct movie id');
+				t.equals(res.body.director, 'James', 'Request responses with correct movie director');
+				if (err) throw err;
+				t.end();
+			});
+	});
+});
+test('Test GET/film/:title/cast', (t) => {
+	build().then(() => {
+		supertest(server)
+			.get('/film/titanic/cast')
+			.expect(200)
+			.expect('content-type', 'application/json; charset=utf-8')
+			.end((err, res) => {
+				t.equals(res.body.movapi_id, 34, 'Request responses with correct movie id');
+				t.equal(res.body.gender_parity_cast.female, 33, 'female gender parity is correct');
+				if (err) throw err;
+				t.end();
+			});
+	});
+});
+
 test('Test GET/film/:title route', (t) => {
 	build().then(() => {
 		supertest(server)

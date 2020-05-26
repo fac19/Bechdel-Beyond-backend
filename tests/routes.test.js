@@ -49,3 +49,20 @@ test('test GET/films route', (t) => {
 			});
 	});
 });
+
+test('test GET/film/:title/reviews route', (t) => {
+	build().then(() => {
+		supertest(server)
+			.get('/film/titanic/reviews')
+			.expect(200)
+			.expect('content-type', 'application/json; charset=utf-8')
+			.end((err, res) => {
+				t.equals(res.body.length, 1, 'Get reviews for Titanic');
+				t.equals(Object.keys(res.body[0]).length, 10, 'Review object has 10 keys');
+				t.equals(res.body[0].title, 'titanic', 'Film title is correct');
+				t.equals(res.body[0].comment, 'It was terrible!', 'Review coment match');
+				if (err) throw err;
+				t.end();
+			});
+	});
+});

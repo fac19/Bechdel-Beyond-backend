@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const handleError = require('./middleware/error');
 const getUserMiddleware = require('./middleware/getUser');
-// const setupMovies = require('./database/fetch');
 const { signup, logIn } = require('./handlers/userHandler');
 const { getAllFilms, getFilm } = require('./handlers/filmHandler');
 const { getFilmReviews, getUserReviews, postReview } = require('./handlers/reviewHandler');
@@ -12,8 +11,6 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 server.use(getUserMiddleware);
-
-// server.get('/', setupMovies); -> Only use to populate production db
 
 // server routes
 // Users

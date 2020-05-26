@@ -8,6 +8,7 @@ const apikeyOMDB = process.env.APIKEYOMDB;
 const movieTitles = [];
 const movieIds = [];
 
+
 function checkResponse(res) {
 	if (!res.ok) {
 		const error = new Error(`Movie doesn't exist in OMDb`);
@@ -160,5 +161,5 @@ function setupMovies() {
 		.then(getMovieCrew)
 		.catch(console.error);
 }
-
+setupMovies()
 module.exports = setupMovies;

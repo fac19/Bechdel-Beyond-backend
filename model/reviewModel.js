@@ -39,29 +39,31 @@ function getUserReviews(id) {
 }
 
 function postReview(review) {
-	return db.query(
-		`INSERT INTO user_reviews
-        (user_id, movAPI_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment) VALUES($1, $2, $3, $4, $5, $6, $7)`,
-		[
-			review.user_id,
-			review.movAPI_id,
-			review.bechdel_1,
-			review.bechdel_2,
-			review.bechdel_3,
-			review.beyond,
-			review.comment,
-		],
-	);
+	return db
+		.query(
+			`INSERT INTO user_reviews
+        (user_id, movAPI_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+			[
+				review.user_id,
+				review.movAPI_id,
+				review.bechdel_1,
+				review.bechdel_2,
+				review.bechdel_3,
+				review.beyond,
+				review.comment,
+			],
+		)
+		.then((res) => res.rows[0]);
 }
 
-// Stretch goals
-// function editReview() {}
-// function deleteReview() {}
-
+function getFilmId(title) {
+	return db
+		.query(`SELECT movAPI_id FROM films WHERE title=($1)`, [title])
+		.then((res) => res.rows[0]);
+}
 module.exports = {
 	getFilmReviews,
 	getUserReviews,
 	postReview,
-	// editReview,
-	// deleteReview,
+	getFilmId,
 };

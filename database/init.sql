@@ -81,7 +81,9 @@ CREATE TABLE user_reviews
     VALUES
         (1, 12, true, true, true, 3, 'I love it!'),
         (2, 12, false, true, true, 2, 'I so hate it!'),
-        (2, 34, false, false, true, 1, 'It was terrible!');
+        (2, 34, false, false, true, 1, 'It was terrible!'),
+        (3, 34, true, true, true, 1, 'terrible!');
+
 
     INSERT INTO film_cast
         (name, gender, character, movAPI_id)

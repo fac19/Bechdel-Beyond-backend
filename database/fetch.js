@@ -25,7 +25,7 @@ function getMovieDetails() {
 			.then(checkResponse)
 			.then((movie) => {
 				const movieTitle = movie.Title.toLowerCase();
-				console.log("before query")
+				console.log(id)
 				return db
 					.query(
 						`INSERT INTO films(title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,
@@ -46,7 +46,7 @@ function getMovieDetails() {
 						],
 					)
 					.then((res) => {
-						console.log('inserted into db')
+					
 						return res.rows[0]
           })
           .catch(console.error);
@@ -76,7 +76,7 @@ function getMovieDetails() {
 				}
 				return db.query(
 					`INSERT INTO user_reviews(user_id, movAPI_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment) VALUES($1, $2, $3, $4, $5, $6, $7)`,
-					[0, id, b1, b2, b3, bey, 'Added by Bechdel Api'],
+					[1, id, b1, b2, b3, bey, 'Added by Bechdel Api'],
 				);
 			})
 			.catch(console.error);

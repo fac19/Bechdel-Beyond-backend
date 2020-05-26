@@ -160,3 +160,24 @@ test('Test POST /film/:title/reviews', (t) => {
 			});
 	});
 });
+
+test('Test POST /film/:title/reviews - User cannot post if they are not signed in', (t) => {
+	const review = {
+		bechdel_1: true,
+		bechdel_2: true,
+		bechdel_3: true,
+		beyond: 3,
+		comment: 'Horrible!',
+	};
+	build().then(() => {
+		supertest(server)
+			.post('/film/titanic/reviews')
+			.send(review)
+			.expect(401)
+			.end((err, res) => {
+				t.equals(res.text, 'Please login', 'Error message is Please login');
+				t.equal(res.status, 401, 'Status code is 401');
+				t.end();
+			});
+	});
+});

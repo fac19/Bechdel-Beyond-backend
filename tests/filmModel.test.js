@@ -1,7 +1,7 @@
 const test = require('tape');
 const build = require('../database/build');
 
-const { getAllFilms, getFilm } = require('../model/filmModel');
+const { getAllFilms, getFilm, getFilmId } = require('../model/filmModel');
 
 // console.groupCollapsed('TEST: for films');
 
@@ -40,11 +40,19 @@ test('Able to get a film by title', (t) => {
 test('Returns an error if no film title match', (t) => {
 	build().then(() => {
 		getFilm('titanik').catch((err) => {
-			t.equal(err.message, 'Film does not exist', 'Correct error');
+			t.equal(err.message, 'Film does not exist in our database', 'Correct error');
 			t.equal(err.status, 404, 'Status code is 404');
 			t.end();
 		});
 	});
 });
 
-// console.groupEnd('TEST: for films');
+test('Returns an error if no film title match', (t) => {
+	build().then(() => {
+		getFilmId('Forever Alice').catch((err) => {
+			t.equal(err.message, 'Film does not exist in our database', 'Correct error');
+			t.equal(err.status, 404, 'Status code is 404');
+			t.end();
+		});
+	});
+});

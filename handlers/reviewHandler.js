@@ -18,20 +18,24 @@ function getUserReviews(req, res, next) {
 }
 
 function postReview(req, res, next) {
-	getFilmId(req.params.title)
-		.then((filmId) => {
-			const userId = req.user.user_id;
-			const reviewHeader = {
-				user_id: userId,
-				movAPI_id: filmId.movapi_id,
-			};
+	if (!req.user) {
+		res.status(401).send('Please login');
+	} else {
+		getFilmId(req.params.title)
+			.then((filmId) => {
+				const userId = req.user.user_id;
+				const reviewHeader = {
+					user_id: userId,
+					movAPI_id: filmId.movapi_id,
+				};
 
-			const reviewBody = { ...reviewHeader, ...req.body };
-			model.postReview(reviewBody).then((review) => {
-				res.status(201).send(review);
-			});
-		})
-		.catch(next);
+				const reviewBody = { ...reviewHeader, ...req.body };
+				model.postReview(reviewBody).then((review) => {
+					res.status(201).send(review);
+				});
+			})
+			.catch(next);
+	}
 }
 
 module.exports = { getFilmReviews, getUserReviews, postReview };

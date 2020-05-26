@@ -13,11 +13,11 @@ before_script:
 script:
   - npm run test
   - npm run report-test
-deploy:
-  provider: heroku
-  api_key:
-    secure: HEROKU_API_KEY
-  app: apibechdel
-  on:
-    repo: fac19/Bechdel-Beyond-backend
-  skip_cleanup: 'true'
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: HEROKU_API_KEY
+#   app: apibechdel
+#   on:
+#     repo: fac19/Bechdel-Beyond-backend
+#   skip_cleanup: 'true'

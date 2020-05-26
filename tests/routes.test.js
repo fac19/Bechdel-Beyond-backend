@@ -78,7 +78,7 @@ test('test GET/user/:id/reviews route', (t) => {
 			.end((err, res) => {
 				t.equals(res.body.length, 1, 'Get all user reviews');
 				t.equals(Object.keys(res.body[0]).length, 10, 'Review object has 10 keys');
-				t.equals(res.body[0].comment, 'terrible!', 'Review coment match');
+				t.equals(res.body[0].comment, 'terrible!', 'Review comment match');
 				if (err) throw err;
 				t.end();
 			});

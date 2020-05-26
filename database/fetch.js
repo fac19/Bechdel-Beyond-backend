@@ -130,12 +130,14 @@ function getMovieCrew() {
 }
 
 function setupMovies() {
+	console.log("started setupmovies")
   let i = 0;
 	return fetch(
 		`https://api.themoviedb.org/3/discover/movie?api_key=${apikeyTMDB}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=1997`,
 	)
 		.then((data) => data.json())
 		.then((result) => {
+			console.log(result)
       const moviesArr = result.results;
 			if (i <= 20) {
 				moviesArr.map((movie) => {
@@ -144,6 +146,7 @@ function setupMovies() {
 					)
 						.then((data) => data.json())
 						.then((response) => {
+							console.log(response)
 							let imdb = response.imdb_id.replace('tt', '');
 							movieTitles.push({
 								title: movie.title,

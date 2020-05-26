@@ -46,9 +46,7 @@ CREATE TABLE user_reviews
     CREATE TABLE film_cast
     (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255),
-        gender INTEGER,
-        character VARCHAR(255),
+        gender_parity_cast json,
         movAPI_id INTEGER REFERENCES films(movAPI_id)
     );
 
@@ -56,7 +54,6 @@ CREATE TABLE user_reviews
     (
         id SERIAL PRIMARY KEY,
         director VARCHAR(255),
-        assistant_director VARCHAR(255),
         producer VARCHAR(255),
         gender_parity json,
         movAPI_id INTEGER REFERENCES films(movAPI_id)
@@ -86,14 +83,14 @@ CREATE TABLE user_reviews
 
 
     INSERT INTO film_cast
-        (name, gender, character, movAPI_id)
+        (gender_parity_cast, movAPI_id)
     VALUES
-        ('James Cameron', 2, 'Judge', 34);
+        ('{ "male": 12, "female": 33, "notlisted": 342 }', 34);
 
     INSERT INTO films_crew
-        (director, assistant_director, producer, gender_parity, movAPI_id)
+        (director, producer, gender_parity, movAPI_id)
     VALUES
-        ('James', 'Ako', 'Gio', '{ "male": 2, "female": 3, "notlisted": 34 }' , 34),
-        ('Gio', 'Chloe', 'Ako', '{ "male": 2, "female": 3, "notlisted": 34 }' , 34);
+        ('James', 'Gio', '{ "male": 2, "female": 3, "notlisted": 34 }' , 34),
+        ('Chloe', 'Ako', '{ "male": 2, "female": 3, "notlisted": 34 }' , 34);
 
     COMMIT;

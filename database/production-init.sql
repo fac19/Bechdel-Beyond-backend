@@ -43,24 +43,19 @@ CREATE TABLE user_reviews
     date TIMESTAMP
     WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-CREATE TABLE film_cast
-(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    gender INTEGER,
-    character VARCHAR(255),
-    movAPI_id INTEGER REFERENCES films(movAPI_id)
-);
+    CREATE TABLE film_cast
+    (
+        id SERIAL PRIMARY KEY,
+        gender_parity_cast json,
+        movAPI_id INTEGER REFERENCES films(movAPI_id)
+    );
 
-CREATE TABLE films_crew
-(
-    id SERIAL PRIMARY KEY,
-    director VARCHAR(255),
-    assistant_director VARCHAR(255),
-    producer VARCHAR(255),
-    gender_parity json,
-    movAPI_id INTEGER REFERENCES films(movAPI_id)
-);
-
-
-COMMIT;
+    CREATE TABLE films_crew
+    (
+        id SERIAL PRIMARY KEY,
+        director VARCHAR(255),
+        producer VARCHAR(255),
+        gender_parity json,
+        movAPI_id INTEGER REFERENCES films(movAPI_id)
+    );
+    COMMIT;

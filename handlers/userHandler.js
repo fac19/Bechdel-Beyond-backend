@@ -49,20 +49,23 @@ function logIn(req, res, next) {
 	model
 		.getUser(req.body.email)
 		.then((dbUser) => {
-			bcrypt.compare(req.body.password, dbUser.userpassword).then((result) => {
+			return bcrypt.compare(req.body.password, dbUser.userpassword).then((result) => {
 				if (!result) throw new Error('Bad password!');
-				const claims = {
-					user_id: dbUser.id,
-					admin: dbUser.adminusr || false,
-				};
-				const token = jwt.sign(claims, secret, {
-					expiresIn: '24h',
-				});
-				res.send({
-					user_name: dbUser.username,
-					user_id: dbUser.id,
-					token,
-				});
+				return dbUser;
+			});
+		})
+		.then((dbUser) => {
+			const claims = {
+				user_id: dbUser.id,
+				admin: dbUser.adminusr || false,
+			};
+			const token = jwt.sign(claims, secret, {
+				expiresIn: '24h',
+			});
+			res.send({
+				user_name: dbUser.username,
+				user_id: dbUser.id,
+				token,
 			});
 		})
 		.catch(next);

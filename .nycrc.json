@@ -1,5 +1,5 @@
 {
 	"all": true,
 	"check-coverage": false,
-	"exclude": ["database/fetch.js", "database/scripts.js"]
+	"exclude": ["database/fetch.js", "database/scripts.js", "tests/*.test.js"]
 }

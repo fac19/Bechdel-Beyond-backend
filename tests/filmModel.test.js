@@ -3,8 +3,6 @@ const build = require('../database/build');
 
 const { getAllFilms, getFilm } = require('../model/filmModel');
 
-// console.groupCollapsed('TEST: for films');
-
 test('All films are showing in database', (t) => {
 	build()
 		.then(() => {
@@ -46,5 +44,3 @@ test('Returns an error if no film title match', (t) => {
 		});
 	});
 });
-
-// console.groupEnd('TEST: for films');

@@ -66,7 +66,9 @@ CREATE TABLE user_reviews
         (username, email, userPassword)
     VALUES
         ('Gio', 'gio@gio.com', '123'),
-        ('Chloe', 'chloe@chloe.com', '123');
+        ('Chloe', 'chloe@chloe.com', '123'),
+        ('Guy', 'guy@someguy.com', '$2a$10$.4XK5WMk1dTdJIpanxAEZOzmZLArCgWzeTTBSDCNqmjtFP/GHvNce');
+    /*hashed 123 password*/
 
     INSERT INTO films
         (title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings)

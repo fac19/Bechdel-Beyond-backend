@@ -13,13 +13,13 @@ function signup(req, res, next) {
 	const newUserEmail = req.body.email;
 	const newUserName = req.body.username;
 	const rawPassword = req.body.password;
-	bcrypt
+	return bcrypt
 		.genSalt(10)
 		.then((salt) => bcrypt.hash(rawPassword, salt))
 		.then((cookedPassword) => {
 			const newUser = {
-				email: newUserEmail,
 				username: newUserName,
+				email: newUserEmail,
 				password: cookedPassword,
 			};
 			model
@@ -32,13 +32,12 @@ function signup(req, res, next) {
 						user_id: userID,
 						username: newUserName,
 						email: newUserEmail,
-						token: token,
+						token,
 					});
 				})
 				.catch((err) => {
 					res.status(401).send({
-						error:
-							'Could not sign up with those credentials, that email may already exist',
+						error: 'Could not sign up with those credentials, that email may already exist',
 						msg: err.message,
 					});
 				})
@@ -62,7 +61,7 @@ function logIn(req, res, next) {
 				res.send({
 					user_name: dbUser.username,
 					user_id: dbUser.id,
-					token: token,
+					token,
 				});
 			});
 		})

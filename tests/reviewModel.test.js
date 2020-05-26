@@ -9,8 +9,6 @@ const {
 	// deleteReview,
 } = require('../model/reviewModel');
 
-// console.groupCollapsed('TEST: Can get and post reviews');
-
 test('Can get reviews for one given film', (t) => {
 	build()
 		.then(() => {
@@ -68,5 +66,3 @@ test('Can post a review', (t) => {
 			t.end();
 		});
 });
-
-// console.groupEnd('TEST: Can get and post reviews');

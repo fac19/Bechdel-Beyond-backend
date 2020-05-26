@@ -66,3 +66,52 @@ test('test GET/film/:title/reviews route', (t) => {
 			});
 	});
 });
+
+test('test POST /signup route', (t) => {
+	build().then(() => {
+		supertest(server)
+			.post('/signup')
+			.send({
+				email: 'harry@harry.com',
+				username: 'Harry',
+				password: '123',
+			})
+			.expect(201)
+			.expect('content-type', 'application/json; charset=utf-8')
+			.end((err, res) => {
+				t.notEquals(res.body.token, undefined, 'A token has been issued');
+				t.equals(
+					/^[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?$/.test(res.body.token),
+					true,
+					'Check for correct jwt token',
+				);
+				t.equals(res.body.email, 'harry@harry.com', 'Email is correct');
+				if (err) throw err;
+				t.end();
+			});
+	});
+});
+
+test('Test POST /login route', (t) => {
+	build().then(() => {
+		supertest(server)
+			.post('/login')
+			.send({
+				email: 'guy@someguy.com',
+				password: '123',
+			})
+			.expect(200)
+			.expect('content-type', 'application/json; charset=utf-8')
+			.end((err, res) => {
+				t.equals(res.body.user_name, 'Guy', 'Username is correct');
+				t.notEquals(res.body.token, undefined, 'A token has been issued');
+				t.equals(
+					/^[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?$/.test(res.body.token),
+					true,
+					'Check for correct jwt token',
+				);
+				if (err) throw err;
+				t.end();
+			});
+	});
+});

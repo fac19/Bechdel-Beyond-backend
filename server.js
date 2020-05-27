@@ -14,6 +14,7 @@ server.use(express.json());
 server.use(getUserMiddleware);
 
 // server routes
+server.get('/', (req, res) => res.send(`<h1>Nothing to see here</h1>`));
 // Users
 server.post('/signup', signup);
 server.post('/login', logIn);

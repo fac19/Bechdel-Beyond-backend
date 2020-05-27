@@ -64,15 +64,15 @@ Bear in mind that in our `package.json` runs tests from `bbtest` database and na
 
 **Scripts**
 
-- Run tests: `npm run test`.
+- Run tests: `npm run test`
 
-- Start server `npm run dev`
+- Start server: `npm run dev`
 
 - Optional: `npm run fetch` if you wish to populate your bbdev database with more data (can be skipped if you just intend to test the api). This will run `fetch.js` which makes fetch requests to different APIs and gather resources that are used in the production database.
 
 ## Usage
 
-### Berchdel API routes
+### Bechdel API routes
 
 The base URL for the api endpoints is: `https://apibechdel.herokuapp.com/`
 
@@ -135,8 +135,7 @@ The base URL for the api endpoints is: `https://apibechdel.herokuapp.com/`
 Node.js</br>
 Express
 
-Deployment: Heroku
-
-CI: Travis
-
-Testing: Tape, Supertest and Codecov
+Deployment: Heroku</br>
+CI: Travis</br>
+Testing: Tape, Supertest and Codecov</br>
+Management: Jira

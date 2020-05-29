@@ -64,8 +64,11 @@ Bear in mind that in our `package.json` runs tests from `bbtest` database and na
 
 - Start server: `npm run dev`
 
-- Optional: `npm run fetch` if you wish to populate your bbdev database with more data (can be skipped if you just intend to test the api). This will run `fetch.js` which makes fetch requests to different APIs and gather resources that are used in the production database. Contact one of us to get api keys for the two APIs and include them in your `.env` file like so: `APIKEYTMDB=key
-APIKEYOMDB=key`.
+- Optional: `npm run fetch` if you wish to populate your bbdev database with more data (can be skipped if you just intend to test the api). This will run `fetch.js` which makes fetch requests to different APIs and gather resources that are used in the production database. Contact one of us to get api keys for the two APIs and include them in your `.env` file like so: 
+```
+APIKEYTMDB=key
+APIKEYOMDB=key
+```
 
 ## Usage
 

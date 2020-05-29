@@ -72,6 +72,10 @@ Bear in mind that in our `package.json` runs tests from `bbtest` database and na
 
 ## Usage
 
+### Database schema
+
+![database schema](./schema_img.png)
+
 ### Bechdel API routes
 
 The base URL for the api endpoints is: `https://apibechdel.herokuapp.com/`
@@ -90,7 +94,7 @@ The base URL for the api endpoints is: `https://apibechdel.herokuapp.com/`
 | Path           | Method | Body | Example response                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | -------------- | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `/films`       | `GET`  | n/a  | `[{"title": "Titanic", "movapi_id": "34"..."}, {"title": "star wars: episode iv - a new hope", "movapi_id": "12"..."}, ...]`                                                                                                                                                                                                                                                                                                                                                                                       |
-| `/film/:title` | `GET`  | n/a  | `[{ "title": "Titanic", "movapi_id": "34", "poster": "https://m.media-amazon.com/images...", "year": "1997", "rated": "PG-13", "runtime": "194min", "genre": "["drama", "romance"]", "plot": "A seventeen-year-old aristocrat falls in love with...", "filmLanguage": "English", "country": "USA", "awards": "Won 11 oscars and another 114 wins", "ratings":"[{ "Source": "Internet Movie Database", "Value": "7.8/10" }, { "Source": "Rotten Tomatoes", "Value": "82%" }, { "Source": "Metacritic", "Value": "83/100" }]"` |
+| `/film/:title` | `GET`  | n/a  | `[{ "title": "Titanic", "movapi_id": "34", "poster": "https://m.media-amazon.com/images...", "year": "1997", "rated": "PG-13", "runtime": "194min", "genre": "["drama", "romance"]", "plot": "A seventeen-year-old aristocrat falls in love with...", "filmLanguage": "English", "country": "USA", "awards": "Won 11 oscars and another 114 wins", "ratings":"72"` |
 
 #### Reviews (Bechdel and beyond)
 

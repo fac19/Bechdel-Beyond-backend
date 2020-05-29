@@ -26,7 +26,7 @@ CREATE TABLE films
     filmLanguage VARCHAR(255),
     country VARCHAR(255),
     awards VARCHAR(255),
-    ratings json
+    ratings INTEGER
 );
 
 CREATE TABLE user_reviews
@@ -70,8 +70,8 @@ CREATE TABLE user_reviews
     INSERT INTO films
         (title, movAPI_id, poster, year, rated, released, runtime, genre, plot, filmLanguage, country, awards, ratings)
     VALUES
-        ('titanic', 34, 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCotMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', '["drama", "romance"]', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '[{"Source":"Internet Movie Database","Value":"7.8/10"},{"Source":"Rotten Tomatoes","Value":"82%"},{"Source":"Metacritic","Value":"83/100"}]'),
-        ('Star Wars: Episode IV - A New Hope', 12, 'https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', '1977', 'PG', '25 May 1977', '121 min', '["Action", "Adventure", "Fantasy", "Sci-Fi"]', 'Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.', 'English', 'USA', 'Won 6 Oscars. Another 52 wins & 28 nominations.', '[{ "source": "Internet Movie Database", "value": "8.6/10" }, { "source": "Rotten Tomatoes", "value": "92%" }, { "source": "Metacritic", "value": "90/100" }]');
+        ('titanic', 34, 'https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUCotMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg', '1997', 'PG-13', '19 Dec 1997', '194 min', '["drama", "romance"]', 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 'English', 'USA', 'Won 11 oscars and another 114 wins', '87'),
+        ('Star Wars: Episode IV - A New Hope', 12, 'https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', '1977', 'PG', '25 May 1977', '121 min', '["Action", "Adventure", "Fantasy", "Sci-Fi"]', 'Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.', 'English', 'USA', 'Won 6 Oscars. Another 52 wins & 28 nominations.', '87');
 
     INSERT INTO user_reviews
         (user_id, movAPI_id, bechdel_1, bechdel_2, bechdel_3, beyond, comment)

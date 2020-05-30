@@ -21,6 +21,25 @@ test('Can get crew for a given movie', (t) => {
 		});
 });
 
+test('Correct error message returns if film crewnot found', (t) => {
+	build()
+		.then(() => {
+			getCrew(35).catch((err) => {
+				t.equal(
+					err.message,
+					'Film does not exist in our database',
+					'Correct message if crew not found',
+				);
+				t.equal(err.status, 404, 'Correct status if crew not found');
+				t.end();
+			});
+		})
+		.catch((err) => {
+			t.error(err);
+			t.end();
+		});
+});
+
 test('Can get cast for a given movie', (t) => {
 	build()
 		.then(() => {
@@ -28,6 +47,25 @@ test('Can get cast for a given movie', (t) => {
 				t.equal(res.gender_parity_cast.male, 12, 'Gender Parity in Movie cast for man');
 				t.equal(res.gender_parity_cast.female, 33, 'Gender Parity in Movie cast for woman');
 				t.equal(res.gender_parity_cast.notlisted, 342, 'Gender Parity in Movie cast for ulisted');
+				t.end();
+			});
+		})
+		.catch((err) => {
+			t.error(err);
+			t.end();
+		});
+});
+
+test('Correct error message returns if film cast not found', (t) => {
+	build()
+		.then(() => {
+			getCast(35).catch((err) => {
+				t.equal(
+					err.message,
+					'Film does not exist in our database',
+					'Correct message if cast not found',
+				);
+				t.equal(err.status, 404, 'Correct status if cast not found');
 				t.end();
 			});
 		})

@@ -12,7 +12,7 @@ test('Route tests are running!', (t) => {
 	t.end();
 });
 
-test('handleError function returns ccustom message', (t) => {
+test('handleError function returns custom message', (t) => {
 	build().then(() => {
 		supertest(server)
 			.get('/film/dummy')
